@@ -1,0 +1,7 @@
+# ec2 private key
+ec2-ssh-key
+
+# terraform gitignores
+.terraform
+.terraform.lock.hcl
+terraform.tfstate*
