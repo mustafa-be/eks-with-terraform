@@ -212,3 +212,9 @@ resource "aws_eks_node_group" "public_nodegroup" {
   ]
 
 }
+resource "aws_iam_openid_connect_provider" "eks_oidc_webidentity" {
+  url = aws_eks_cluster.eks_cluster.identity[0].oidc[0].issuer
+  thumbprint_list = [var.eks_oidc_root_ca_thumbprint]
+  client_id_list  = ["sts.amazonaws.com"]
+  tags = merge({Name = "${local.full_name_eks_cluster}-irsa"},local.tags)
+}

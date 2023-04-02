@@ -10,6 +10,10 @@ output "ec2_instance_ssh_ip" {
   value = aws_eip.ssh_eip.public_ip
 }
 
+output "eks_cluster_info" {
+  value = aws_eks_cluster.eks_cluster
+}
+
 output "eks_cluster_id" {
   value = aws_eks_cluster.eks_cluster.id
 }
@@ -30,3 +34,7 @@ output "eks_cluster_oidc_issuer" {
   value = aws_eks_cluster.eks_cluster.identity[0].oidc[0].issuer
 }
 
+output "aws_iam_openid_connect_provider_arn" {
+  description = "AWS IAM Open ID Connect Provider ARN"
+  value = aws_iam_openid_connect_provider.eks_oidc_webidentity.arn 
+}
